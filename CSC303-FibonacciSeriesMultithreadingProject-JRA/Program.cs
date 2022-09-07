@@ -1,34 +1,44 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Threading;
+
 namespace FibonacciSeries
 {
     class Program
     {
-        static int FibonacciIterative(int n)
+        public static int Create_FibSeries(int n)
         {
-            int firstnumber = 0, secondnumber = 1, result = 0;
-
-            if (n == 0) return 0; //To return the first Fibonacci number
-            if (n == 1) return 1; //To return the second Fibonacci number
-
-            for (int i = 2; i <= n; i++)
-            {
-                result = firstnumber + secondnumber;
-                firstnumber = secondnumber;
-                secondnumber = result;
-            }
-
-            return result;
+            if (n == 0) return 0;
+            if (n == 1) return 1;
+            return Create_FibSeries(n - 1) + Create_FibSeries(n - 2);
         }
 
-        static void Main(string[] args)
+        public static void Fibonacci_Series(int length)
+        {
+            Console.Write("Fibonacci Series: ");
+            for (int i = 0; i < length; i++)
+            {
+                Console.Write("{0} ", Create_FibSeries(i));
+            }
+        }
+
+    public static void FibonacciReversed(int length)
+        {
+            Console.Write("Fibonacci Series Reversed: ");
+            for (int i = length; i >= 1; i--)
+            {
+                Console.Write("{0} ", Create_FibSeries(i));
+            }
+        }
+        public static void Main(string[] args)
         {
             Console.Write("Enter the length of the Fibonacci Series: ");
             int length = Convert.ToInt32(Console.ReadLine());
 
-            for (int i = 0; i < length; i++)
-            {
-                Console.Write("{0} ", FibonacciIterative(i));
-            }
+            Fibonacci_Series(length);
+            Console.WriteLine();
+            FibonacciReversed(length);
             Console.ReadKey();
         }
     }
