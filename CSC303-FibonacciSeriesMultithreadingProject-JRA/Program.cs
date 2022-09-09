@@ -46,6 +46,7 @@ namespace FibonacciSeries
             FibonacciReversed(length);
             stopwatch.Stop();
             Console.WriteLine("Total milliseconds without multiple threads = " + stopwatch.ElapsedMilliseconds);
+            Console.ReadKey();
         }
         static int Create_FibSeries(int n)
             //This method is used to generate a list of the elements in the Fibonacci Series using an iterative approach.
